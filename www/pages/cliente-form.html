@@ -1,0 +1,113 @@
+<header class="navbar navbar-dark bg-primary">
+
+    <div class="container-fluid">
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack()">
+                <i class="ti ti-arrow-left"></i>
+            </button>
+    
+            <span
+                id="page-title"
+                class="navbar-brand mb-0 h1">
+    
+                Novo Cliente
+    
+            </span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<div>
+
+    <div class="mb-3">
+
+        <label for="nome" class="form-label required">
+            Nome
+        </label>
+
+        <input
+            id="nome"
+            type="text"
+            class="form-control"
+            placeholder="Nome completo">
+
+        <div
+            id="nomeError"
+            class="invalid-feedback">
+
+            Informe o nome do cliente.
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label for="apelido" class="form-label">
+            Apelido <small>(opcional)</small>
+        </label>
+
+        <input
+            id="apelido"
+            type="text"
+            class="form-control"
+            placeholder="Zé da Padaria">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label for="telefone" class="form-label">
+            Telefone
+        </label>
+
+        <input
+            id="telefone"
+            type="tel"
+            class="form-control"
+            placeholder="(21) 99999-9999">
+
+        <div
+            id="telefoneError"
+            class="invalid-feedback">
+
+            Telefone inválido.
+
+        </div>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label for="observacoes" class="form-label">
+            Observações <small>(opcional)</small>
+        </label>
+
+        <textarea
+            id="observacoes"
+            class="form-control"
+            rows="4"
+            placeholder="Ex.: Paga sempre no início do mês | Preferência: lembrete via WhatsApp"></textarea>
+
+    </div>
+
+    <button
+        id="btnSalvarCliente"
+        class="btn btn-primary w-100">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+            <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M14 4l0 4l-6 0l0 -4" />
+        </svg>
+
+        Cadastrar Cliente
+
+    </button>
+
+</div>

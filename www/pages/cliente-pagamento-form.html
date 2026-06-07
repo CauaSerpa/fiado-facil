@@ -1,0 +1,134 @@
+<header class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+
+        <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack()">
+            <i class="ti ti-arrow-left"></i>
+        </button>
+
+        <span
+            id="page-title"
+            class="navbar-brand mb-0 h1 position-absolute start-50 translate-middle-x">
+
+            Registrar Pagamento
+
+        </span>
+
+    </div>
+</header>
+
+<div class="card bg-success" style="margin: -1.1rem -.5rem 0 -.5rem; border-radius: 0;">
+    <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+
+            <div class="d-flex align-items-center">
+
+                <div class="avatar avatar-xl bg-white text-success rounded-circle" id="clienteAvatar">
+                    C
+                </div>
+    
+                <div class="ms-3">
+    
+                    <p class="text-white mb-2">
+                        Cliente
+                    </p>
+    
+                    <h2 class="text-white mb-0" id="clienteNome">
+                        Cliente
+                    </h2>
+    
+                </div>
+
+            </div>
+
+            <div>
+                
+                <h2>
+                    <span class="badge bg-white text-success badge-pill">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -8" />
+                            <path d="M3 10l18 0" />
+                            <path d="M7 15l.01 0" />
+                            <path d="M11 15l2 0" />
+                        </svg>
+
+                        Pagamento
+
+                    </span>
+                </h2>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-footer bg-green d-flex align-items-center justify-content-between" style="background-color: green !important; border: 0 !important; border-radius: 0 !important;">
+        <p class="text-white mb-0">
+            Total a Pagar:
+        </p>
+        <p id="totalAberto" class="h3 text-white mb-0">R$ 0,00</p>
+    </div>
+</div>
+
+<div class="p-3">
+    <p class="h2">Qual valor <span id="cliente"></span> vai pagar?</p>
+
+    <div class="mb-3">
+        <label for="valor" class="form-label required">
+            Valor
+        </label>
+        <input id="valor" class="form-control" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" value="R$ 0,00">
+
+        <div
+            id="valorError"
+            class="invalid-feedback">
+            Informe um valor maior que zero.
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-1">
+            <span>Ainda restará a pagar:</span>
+            <span id="restante" class="h5 text-warning mb-0">R$ 0,00</span>
+        </div>
+
+        <div class="text-end">
+            <button id="btnTotal" class="btn btn-sm btn-outline-primary text-end mt-1">
+                Usar total
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="forma" class="form-label required">
+            Forma de pagamento
+        </label>
+        <select id="forma" class="form-control">
+            <option>Dinheiro</option>
+            <option>Pix</option>
+            <option>Cartão de débito</option>
+            <option>Cartão de crédito</option>
+            <option>Transferência</option>
+            <option>Carteira digital</option>
+            <option>Outros</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="data" class="form-label required">
+            Data
+        </label>
+        <input id="data" type="date" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="descricao" class="form-label">
+            Descrição <small>(opcional)</small>
+        </label>
+        <textarea id="descricao" class="form-control" rows="4" placeholder="Ex: Pagamento total, pagamento parcial, entrada..."></textarea>
+    </div>
+
+    <button id="btnSalvar" class="btn btn-success w-100">
+        Registrar Pagamento
+    </button>
+
+</div>

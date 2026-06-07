@@ -1,0 +1,130 @@
+<header class="navbar navbar-dark bg-primary">
+
+    <div class="container-fluid">
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack()">
+                <i class="ti ti-arrow-left"></i>
+            </button>
+    
+            <span
+                id="page-title"
+                class="navbar-brand mb-0 h1">
+    
+                Atualizar Cliente
+    
+            </span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<div>
+
+    <div class="mb-3">
+
+        <label for="nome" class="form-label required">
+            Nome
+        </label>
+
+        <input
+            id="nome"
+            type="text"
+            class="form-control"
+            placeholder="Nome completo">
+
+        <div
+            id="nomeError"
+            class="invalid-feedback">
+
+            Informe o nome do cliente.
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label for="apelido" class="form-label">
+            Apelido <small>(opcional)</small>
+        </label>
+
+        <input
+            id="apelido"
+            type="text"
+            class="form-control"
+            placeholder="Zé da Padaria">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label for="telefone" class="form-label">
+            Telefone
+        </label>
+
+        <input
+            id="telefone"
+            type="tel"
+            class="form-control"
+            placeholder="(21) 99999-9999">
+
+        <div
+            id="telefoneError"
+            class="invalid-feedback">
+
+            Telefone inválido.
+
+        </div>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label for="observacoes" class="form-label">
+            Observações <small>(opcional)</small>
+        </label>
+
+        <textarea
+            id="observacoes"
+            class="form-control"
+            rows="4"
+            placeholder="Ex.: Paga sempre no início do mês | Preferência: lembrete via WhatsApp"></textarea>
+
+    </div>
+
+    <button
+        id="btnSalvarCliente"
+        class="btn btn-primary w-100 mb-2">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+            <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M14 4l0 4l-6 0l0 -4" />
+        </svg>
+
+        Atualizar Cliente
+
+    </button>
+
+    <button
+        id="btnDeletarCliente"
+        class="btn btn-ghost btn-danger w-100">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 7l16 0" />
+            <path d="M10 11l0 6" />
+            <path d="M14 11l0 6" />
+            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+        </svg>
+
+        Apagar cliente
+
+    </button>
+
+</div>

@@ -1,0 +1,97 @@
+<header class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+
+        <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack()">
+            <i class="ti ti-arrow-left"></i>
+        </button>
+
+        <span
+            id="page-title"
+            class="navbar-brand mb-0 h1 position-absolute start-50 translate-middle-x">
+
+            Novo Fiado
+
+        </span>
+
+    </div>
+</header>
+
+<div class="card bg-warning" style="margin: -1.1rem -.5rem 0 -.5rem; border-radius: 0;">
+    <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+
+            <div class="d-flex align-items-center">
+
+                <div class="avatar avatar-xl bg-white text-warning rounded-circle" id="clienteAvatar">
+                    C
+                </div>
+    
+                <div class="ms-3">
+    
+                    <p class="text-white mb-2">
+                        Cliente
+                    </p>
+    
+                    <h2 class="text-white mb-0" id="clienteNome">
+                        Cliente
+                    </h2>
+    
+                </div>
+
+            </div>
+
+            <div>
+                
+                <h2>
+                    <span class="badge bg-white text-warning badge-pill">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2" />
+                        </svg>
+
+                        Fiado
+
+                    </span>
+                </h2>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="p-3">
+    <p class="h2">Qual valor <span id="cliente"></span> vai comprar fiado?</p>
+
+    <div class="mb-3">
+        <label for="valor" class="form-label required">
+            Valor
+        </label>
+        <input id="valor" class="form-control" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" value="R$ 0,00">
+
+        <div
+            id="valorError"
+            class="invalid-feedback">
+            Informe um valor maior que zero.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="data" class="form-label required">
+            Data
+        </label>
+        <input id="data" type="date" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="descricao" class="form-label">
+            Descrição <small>(opcional)</small>
+        </label>
+        <textarea id="descricao" class="form-control" rows="4" placeholder="Ex: Produtos, serviços, peças, materiais..."></textarea>
+    </div>
+
+    <button id="btnSalvar" class="btn btn-primary w-100">
+        Cadastrar Fiado
+    </button>
+
+</div>

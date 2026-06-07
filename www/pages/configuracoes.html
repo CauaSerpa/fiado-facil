@@ -1,0 +1,55 @@
+<header class="navbar navbar-dark bg-primary">
+
+    <div class="container-fluid">
+
+        <span
+            id="page-title"
+            class="navbar-brand mb-0 h1">
+
+            Configurações
+
+        </span>
+
+    </div>
+
+</header>
+
+
+<div>
+
+    <div class="card">
+        <div class="card-body">
+
+            <h3 class="card-title">
+                Configurações
+            </h3>
+
+            <p class="card-subtitle">
+                Gerencie backup, importação e reset do sistema.
+            </p>
+
+            <div class="d-grid gap-2">
+
+                <button id="btnExportar" class="btn btn-primary">
+                    <i class="ti ti-download"></i>
+                    Exportar Banco de Dados
+                </button>
+
+                <button id="btnImportar" class="btn btn-warning">
+                    <i class="ti ti-upload"></i>
+                    Importar Banco de Dados
+                </button>
+
+                <button id="btnReset" class="btn btn-danger">
+                    <i class="ti ti-trash"></i>
+                    Apagar Tudo
+                </button>
+
+            </div>
+
+            <input type="file" id="fileInput" accept=".json" hidden />
+
+        </div>
+    </div>
+
+</div>

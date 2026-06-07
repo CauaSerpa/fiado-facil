@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Fiado Simples</title>
+
+    <link
+        rel="stylesheet"
+        href="./assets/tabler/css/tabler.min.css">
+
+    <link
+        rel="stylesheet"
+        href="./assets/icons/tabler-icons.min.css">
+
+    <link
+        rel="stylesheet"
+        href="./assets/css/app.css">
+
+</head>
+<body>
+<div class="page">
+
+    <div id="page-header"></div>
+
+    <main
+        id="app-content"
+        class="container py-3 pb-6 mb-5">
+
+        Carregando...
+
+    </main>
+
+    <nav class="bottom-nav">
+
+        <button
+            class="nav-btn active"
+            data-page="clientes">
+
+            <i class="ti ti-users"></i>
+
+            <span>Clientes</span>
+
+        </button>
+
+        <button
+            class="nav-btn"
+            data-page="dashboard">
+
+            <i class="ti ti-chart-bar"></i>
+
+            <span>Dashboard</span>
+
+        </button>
+
+        <button
+            class="nav-btn"
+            data-page="comercio">
+
+            <i class="ti ti-building-store"></i>
+
+            <span>Comércio</span>
+
+        </button>
+
+        <button
+            class="nav-btn"
+            data-page="configuracoes">
+
+            <i class="ti ti-settings"></i>
+
+            <span>Configurações</span>
+
+        </button>
+
+    </nav>
+
+</div>
+
+<script src="./assets/vendor/dexie/dexie.js"></script>
+<script src="./assets/tabler/js/tabler.min.js"></script>
+<script src="./assets/js/router.js" type="module"></script>
+
+</body>
+</html>

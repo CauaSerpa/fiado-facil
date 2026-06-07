@@ -1,0 +1,232 @@
+<header class="navbar navbar-dark bg-primary">
+
+    <div class="container-fluid">
+
+        <span
+            class="navbar-brand mb-0 h1">
+
+            Comércio
+
+        </span>
+
+    </div>
+
+    <div class="p-1 w-100">
+
+        <ul
+            class="nav nav-segmented nav-2 nav-lg w-100 bg-transparent shadow-none"
+            data-bs-toggle="tabs">
+
+            <a
+                href="#tab-info"
+                class="nav-link active text-white"
+                data-bs-toggle="tab">
+
+                <i class="ti ti-building-store me-1"></i>
+                Informações
+
+            </a>
+
+            <a
+                href="#tab-msg"
+                class="nav-link text-white"
+                data-bs-toggle="tab">
+
+                <i class="ti ti-message-circle me-1"></i>
+                Mensagens
+
+            </a>
+
+        </ul>
+
+    </div>
+
+</header>
+
+<div>
+
+    <div class="tab-content mt-3">
+
+        <!-- INFORMAÇÕES -->
+
+        <div
+            id="tab-info"
+            class="tab-pane active show">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="mb-3">
+
+                        <label for="nomeComercio" class="form-label required">
+                            Nome do Comércio
+                        </label>
+
+                        <input
+                            id="nomeComercio"
+                            type="text"
+                            class="form-control">
+
+                        <div class="invalid-feedback">Informe o nome do comércio.</div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="telefoneComercio" class="form-label required">
+                            Telefone
+                        </label>
+
+                        <input
+                            id="telefoneComercio"
+                            type="tel"
+                            class="form-control">
+
+                        <div class="invalid-feedback">Telefone inválido.</div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pixComercio" class="form-label required">Chave PIX</label>
+                        <div class="row row-cards">
+                            <div class="col-4">
+                                <select id="tipoPix" class="form-select">
+                                    <option value="cpf">CPF</option>
+                                    <option value="cnpj">CNPJ</option>
+                                    <option value="email">E-mail</option>
+                                    <option value="telefone">Telefone</option>
+                                    <option value="aleatoria">Chave Aleatória</option>
+                                </select>
+                            </div>
+                            <div class="col-8">
+                                <input id="pixComercio" type="text" class="form-control">
+                                <div id="pixComercioError" class="invalid-feedback">Chave PIX inválida.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        id="btnSalvarComercio"
+                        class="btn btn-primary w-100">
+
+                        Salvar Informações
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MENSAGENS -->
+
+        <div
+            id="tab-msg"
+            class="tab-pane">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="card-title">
+
+                        Variáveis
+
+                    </h3>
+
+                    <div
+                        class="d-flex flex-wrap gap-2 mb-3">
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{cliente}">
+
+                            Nome do Cliente
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{valor}">
+
+                            Valor Total
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{comercio}">
+
+                            Nome do Comércio
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{telefone}">
+
+                            Telefone
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{ultima_compra}">
+
+                            Última Compra
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{pix}">
+
+                            Chave PIX
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline-primary variavel"
+                            data-tag="{tipo_pix}">
+
+                            Tipo PIX
+
+                        </button>
+
+                    </div>
+
+                    <label class="form-label">
+
+                        Mensagem padrão
+
+                    </label>
+
+                    <textarea
+                        id="mensagemPadrao"
+                        class="form-control"
+                        rows="10"></textarea>
+
+                    <div
+                        class="form-hint mt-2">
+
+                        Clique nas variáveis acima para inserir na mensagem.
+
+                    </div>
+
+                    <div class="mt-3">
+                        <button id="btnSalvarMensagem" class="btn btn-primary mb-2 w-100">Salvar Mensagem</button>
+                        <button id="btnResetMensagem" class="btn btn-outline-secondary w-100">Resetar para padrão</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
