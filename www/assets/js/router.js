@@ -23,25 +23,22 @@ window.navigate = async function(page, options = {})
     await loadPage(page);
 };
 
-window.goBack = async function()
-{
+window.goBack = async function(page = null) {
+
     const previous = historyStack.pop();
 
-    if(!previous)
-    {
-        await loadPage('clientes');
-        return;
-    }
+    const target = page
+        ? page
+        : (previous
+            ? (previous.query
+                ? `${previous.page}?${previous.query}`
+                : previous.page)
+            : 'clientes');
 
-    const route =
-        previous.query
-            ? `${previous.page}?${previous.query}`
-            : previous.page;
+    window.currentPage = target.split('?')[0];
+    window.currentQueryString = target.split('?')[1] || '';
 
-    window.currentPage = previous.page;
-    window.currentQueryString = previous.query;
-
-    await loadPage(route);
+    await loadPage(target);
 };
 
 async function renderFloatingButton(page)

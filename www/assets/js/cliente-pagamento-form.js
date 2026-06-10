@@ -34,6 +34,13 @@ export async function initPagamentoForm(clienteId)
 {
     const cliente = await db.clientes.get(Number(clienteId));
 
+    document
+        .getElementById('btnBack')
+        ?.setAttribute(
+            'onClick',
+            `window.navigate('cliente?id=${cliente.id}')`
+        );
+
     const fiados = await db.fiados.where('clienteId').equals(Number(clienteId)).toArray();
     const pagamentos = await db.pagamentos.where('clienteId').equals(Number(clienteId)).toArray();
 

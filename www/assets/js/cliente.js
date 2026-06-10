@@ -147,7 +147,7 @@ function renderCliente(
                 <div class="container-fluid">
 
                     <div class="d-flex align-items-center gap-2">
-                        <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack()">
+                        <button class="btn btn-ghost btn-primary text-white p-0" onclick="goBack('clientes')">
                             <i class="ti ti-arrow-left"></i>
                         </button>
 

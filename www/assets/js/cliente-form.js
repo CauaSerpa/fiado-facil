@@ -222,6 +222,13 @@ export async function initClienteEdit(clienteId)
 
     if (!cliente) return;
 
+    document
+        .getElementById('btnBack')
+        ?.setAttribute(
+            'onClick',
+            `window.navigate('cliente?id=${cliente.id}')`
+        );
+
     // preencher campos
     document.getElementById('nome').value = cliente.nome || '';
     document.getElementById('apelido').value = cliente.apelido || '';

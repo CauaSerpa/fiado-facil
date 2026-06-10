@@ -10,6 +10,13 @@ export async function initFiadoForm(clienteId)
 {
     const cliente = await db.clientes.get(Number(clienteId));
 
+    document
+        .getElementById('btnBack')
+        ?.setAttribute(
+            'onClick',
+            `window.navigate('cliente?id=${cliente.id}')`
+        );
+
     document.getElementById('clienteAvatar').textContent =
         cliente.apelido?.charAt(0) || cliente.nome.charAt(0);
 
