@@ -1,19 +1,38 @@
+body {
+    padding-top: env(safe-area-inset-top, 25px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.statusbar-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: env(safe-area-inset-top, 25px);
+
+    background: #066fd1;
+
+    z-index: 999999;
+    pointer-events: none;
+}
+
 .bottom-nav{
     position:fixed;
 
-    bottom:0;
-    left:0;
-    right:0;
+    bottom: env(safe-area-inset-bottom, 0px);
+    left: 0;
+    right: 0;
 
-    height:64px;
+    height: 64px;
 
-    background:#fff;
+    background: #fff;
 
-    border-top:1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
 
-    display:flex;
+    display: flex;
 
-    z-index:1000;
+    z-index: 1000;
 }
 
 .nav-btn{
@@ -39,7 +58,7 @@
 }
 
 .btn-floating {
-    bottom: 5rem;
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
     right: 1rem;
     left: auto;
 }

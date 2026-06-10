@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+          content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <title>Fiado Simples</title>
 
@@ -23,67 +23,69 @@
 
 </head>
 <body>
-<div class="page">
+    <div class="statusbar-bg"></div>
 
-    <div id="page-header"></div>
+    <div class="page">
 
-    <main
-        id="app-content"
-        class="container py-3 pb-6 mb-5">
+        <div id="page-header"></div>
 
-        Carregando...
+        <main
+            id="app-content"
+            class="container py-3 pb-6 mb-5">
 
-    </main>
+            Carregando...
 
-    <nav class="bottom-nav">
+        </main>
 
-        <button
-            class="nav-btn active"
-            data-page="clientes">
+        <nav class="bottom-nav">
 
-            <i class="ti ti-users"></i>
+            <button
+                class="nav-btn active"
+                data-page="clientes">
 
-            <span>Clientes</span>
+                <i class="ti ti-users"></i>
 
-        </button>
+                <span>Clientes</span>
 
-        <button
-            class="nav-btn"
-            data-page="dashboard">
+            </button>
 
-            <i class="ti ti-chart-bar"></i>
+            <button
+                class="nav-btn"
+                data-page="dashboard">
 
-            <span>Dashboard</span>
+                <i class="ti ti-chart-bar"></i>
 
-        </button>
+                <span>Dashboard</span>
 
-        <button
-            class="nav-btn"
-            data-page="comercio">
+            </button>
 
-            <i class="ti ti-building-store"></i>
+            <button
+                class="nav-btn"
+                data-page="comercio">
 
-            <span>Comércio</span>
+                <i class="ti ti-building-store"></i>
 
-        </button>
+                <span>Comércio</span>
 
-        <button
-            class="nav-btn"
-            data-page="configuracoes">
+            </button>
 
-            <i class="ti ti-settings"></i>
+            <button
+                class="nav-btn"
+                data-page="configuracoes">
 
-            <span>Configurações</span>
+                <i class="ti ti-settings"></i>
 
-        </button>
+                <span>Configurações</span>
 
-    </nav>
+            </button>
 
-</div>
+        </nav>
 
-<script src="./assets/vendor/dexie/dexie.js"></script>
-<script src="./assets/tabler/js/tabler.min.js"></script>
-<script src="./assets/js/router.js" type="module"></script>
+    </div>
+
+    <script src="./assets/vendor/dexie/dexie.js"></script>
+    <script src="./assets/tabler/js/tabler.min.js"></script>
+    <script src="./assets/js/router.js" type="module"></script>
 
 </body>
 </html>
