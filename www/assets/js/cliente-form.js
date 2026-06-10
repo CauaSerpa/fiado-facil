@@ -209,8 +209,8 @@ export function initClienteForm()
                             .trim()
                 });
 
-            window.navigate?.(
-                `cliente?id=${clienteId}`
+            window.navigate(
+                `feedback?type=success&msg=${encodeURIComponent('Cliente salvo com sucesso')}&redirect=${encodeURIComponent('cliente?id=' + clienteId)}`
             );
         }
     );
@@ -344,7 +344,9 @@ export async function initClienteEdit(clienteId)
             observacoes
         });
 
-        window.navigate?.(`cliente?id=${clienteId}`);
+        window.navigate(
+            `feedback?type=success&msg=${encodeURIComponent('Cliente editado com sucesso')}&redirect=${encodeURIComponent('cliente?id=' + clienteId)}`
+        );
     });
 
     // DELETAR

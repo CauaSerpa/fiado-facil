@@ -216,12 +216,73 @@ async function initializePage(page)
     }
 }
 
+export function loadFeedbackPage(page) {
+    const params = new URLSearchParams(page.split('?')[1] || '');
+
+    const type = params.get('type') || 'success';
+    const msg = params.get('msg') || '';
+    const redirect = params.get('redirect') || 'clientes';
+    const time = Number(params.get('time') || 2000);
+
+    const elements = document.querySelectorAll('#page-header, #statusbar-bg');
+    elements.forEach(el => {
+        el.classList.add('d-none');
+    });
+
+    app.innerHTML = `
+        <div class="feedback-container">
+            <div class="anim-wrapper">
+                <div id="animacao"></div>
+            </div>
+            <h1 id="msg"></h1>
+            <p id="sub">${msg}</p>
+        </div>
+    `;
+
+    document.body.classList.remove('success', 'error');
+    document.body.classList.add(type);
+
+    document.getElementById('msg').innerText = 
+        type === 'success'
+            ? 'Sucesso'
+            : 'Erro';
+
+    const animationPath =
+        type === 'success'
+            ? './assets/lottie/check.json'
+            : './assets/lottie/error.json';
+
+    if (window.__lottieInstance) {
+        window.__lottieInstance.destroy();
+    }
+
+    window.__lottieInstance = lottie.loadAnimation({
+        container: document.getElementById('animacao'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: animationPath
+    });
+
+    setTimeout(() => {
+        elements.forEach(el => {
+            el.classList.remove('d-none');
+        });
+
+        window.navigate(redirect);
+    }, time);
+}
+
 async function loadPage(route)
 {
     const [page, queryString = ''] = route.split('?');
 
     window.currentPage = page;
     window.currentQueryString = queryString;
+
+    if (page.startsWith('feedback')) {
+        return loadFeedbackPage(route);
+    }
 
     const response =
         await fetch(

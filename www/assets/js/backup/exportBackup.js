@@ -1,6 +1,10 @@
-import { db } from '../../database/db.js';
+import { db } from '../../../database/db.js';
 
 export async function exportarBanco() {
+
+    function toBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
 
     try {
 
@@ -29,36 +33,19 @@ export async function exportarBanco() {
 
         };
 
-        const json =
-            JSON.stringify(
-                backup,
-                null,
-                2
-            );
+        const json = JSON.stringify(backup, null, 2);
 
         const nomeArquivo =
             `fiado_simples_backup_${Date.now()}.json`;
 
-        console.log(
-            window.Capacitor.Plugins.Filesystem
-        );
+        const base64Data = toBase64(json);
 
-        console.log(
-            window.Capacitor.Plugins.Share
-        );
-
-        const resultado =
-            await Filesystem.writeFile({
-
-                path: nomeArquivo,
-
-                data: json,
-
-                directory: 'DOCUMENTS',
-
-                recursive: true
-
-            });
+        const resultado = await Filesystem.writeFile({
+            path: nomeArquivo,
+            data: base64Data,
+            directory: 'DOCUMENTS',
+            encoding: 'utf8'
+        });
 
         console.log(resultado);
 
@@ -79,9 +66,5 @@ export async function exportarBanco() {
     catch (e)
     {
         console.error(e);
-
-        alert(
-            JSON.stringify(e)
-        );
     }
 }

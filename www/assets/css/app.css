@@ -71,3 +71,24 @@ main{
     background-color: rgba(255, 255, 255, .25) !important;
     border: 0 !important;
 }
+
+.feedback-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.anim-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#animacao {
+    width: 350px;
+    height: 210px;
+}
+body.success #animacao {
+    transform: scale(1.5);
+}
