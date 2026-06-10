@@ -162,12 +162,17 @@ async function salvarInfo() {
 
     await db.configuracoes.put({ chave:'comercio', nome, telefone, pix, tipo });
 
-    alert('Informações salvas com sucesso!');
+    window.navigate(
+        `feedback?type=success&msg=${encodeURIComponent('Informações salvas com sucesso')}&redirect=comercio`
+    );
 }
 
 async function salvarMensagem() {
     const texto = document.getElementById('mensagemPadrao').value.trim();
     if(!texto) return alert('Mensagem não pode ficar vazia');
     await db.configuracoes.put({ chave:'mensagem', texto });
-    alert('Mensagem salva com sucesso!');
+
+    window.navigate(
+        `feedback?type=success&msg=${encodeURIComponent('Mensagem salva com sucesso')}&redirect=comercio`
+    );
 }

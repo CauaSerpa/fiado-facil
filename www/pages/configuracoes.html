@@ -15,39 +15,66 @@
 </header>
 
 
-<div>
+<div class="row row-cards g-3">
 
-    <div class="card">
+    <!-- EXPORTAR -->
+    <div class="card shadow-sm">
         <div class="card-body">
 
-            <h3 class="card-title">
-                Configurações
+            <h3 class="card-title d-flex align-items-center gap-2">
+                <i class="ti ti-download"></i>
+                Exportar dados
             </h3>
 
-            <p class="card-subtitle">
-                Gerencie backup, importação e reset do sistema.
+            <p class="text-muted mb-3">
+                Baixe uma cópia completa do seu banco de dados incluindo clientes, fiados, pagamentos e configurações.
+                Esse arquivo pode ser usado para backup ou migração.
             </p>
 
-            <div class="d-grid gap-2">
+            <button id="btnExportar" class="btn btn-primary w-100">
+                Exportar backup agora
+            </button>
 
-                <button id="btnExportar" class="btn btn-primary">
-                    <i class="ti ti-download"></i>
-                    Exportar Banco de Dados
-                </button>
+        </div>
+    </div>
 
-                <button id="btnImportar" class="btn btn-warning">
-                    <i class="ti ti-upload"></i>
-                    Importar Banco de Dados
-                </button>
+    <!-- IMPORTAR -->
+    <div class="card shadow-sm">
+        <div class="card-body">
 
-                <button id="btnReset" class="btn btn-danger">
-                    <i class="ti ti-trash"></i>
-                    Apagar Tudo
-                </button>
+            <h3 class="card-title d-flex align-items-center gap-2">
+                <i class="ti ti-upload"></i>
+                Importar dados
+            </h3>
 
-            </div>
+            <p class="text-muted mb-3">
+                Restaure um backup anterior do sistema. Isso pode substituir os dados atuais dependendo do arquivo importado.
+            </p>
 
-            <input type="file" id="fileInput" accept=".json" hidden />
+            <button id="btnImportar" class="btn btn-warning w-100">
+                Importar backup
+            </button>
+
+        </div>
+    </div>
+
+    <!-- RESET -->
+    <div class="card shadow-sm border-danger">
+        <div class="card-body">
+
+            <h3 class="card-title d-flex align-items-center gap-2 text-danger">
+                <i class="ti ti-alert-triangle"></i>
+                Área de risco
+            </h3>
+
+            <p class="text-muted mb-3">
+                Esta ação irá apagar permanentemente todos os dados do sistema, incluindo clientes, fiados e pagamentos.
+                Não é possível desfazer esta operação.
+            </p>
+
+            <button id="btnReset" class="btn btn-danger w-100">
+                Apagar todos os dados
+            </button>
 
         </div>
     </div>

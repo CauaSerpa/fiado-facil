@@ -13,7 +13,9 @@ async function resetBanco()
     await db.delete();
     await db.open();
 
-    alert('Banco resetado com sucesso!');
+    window.navigate(
+        `feedback?type=success&msg=${encodeURIComponent('Banco resetado com sucesso')}&redirect=clientes`
+    );
 }
 
 export function initConfiguracoes()

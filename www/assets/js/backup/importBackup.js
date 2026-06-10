@@ -60,7 +60,9 @@ export async function importarBanco(file) {
             }
         );
 
-        alert('Banco importado com sucesso!');
+        window.navigate(
+            `feedback?type=success&msg=${encodeURIComponent('Banco importado com sucesso')}&redirect=clientes`
+        );
 
         window.location.reload();
 
