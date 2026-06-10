@@ -2,6 +2,9 @@ body {
     padding-top: env(safe-area-inset-top, 25px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+.page {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
 
 .statusbar-bg {
     position: fixed;
@@ -20,11 +23,12 @@ body {
 .bottom-nav{
     position:fixed;
 
-    bottom: env(safe-area-inset-bottom, 0px);
+    bottom: 0;
     left: 0;
     right: 0;
 
-    height: 64px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
 
     background: #fff;
 

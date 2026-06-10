@@ -69,7 +69,8 @@ export async function initFiadoForm(clienteId)
             createdAt: Date.now()
         });
 
-        window.location.href =
-            `/feedback.html?type=success&msg=Fiado cadastrado com sucesso&redirect=cliente?id=${clienteId}`;
+        window.navigate(
+            `feedback?type=success&msg=${encodeURIComponent('Fiado cadastrado com sucesso')}&redirect=${encodeURIComponent('cliente?id=' + clienteId)}`
+        );
     });
 }

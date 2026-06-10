@@ -165,6 +165,8 @@ export async function initPagamentoForm(clienteId)
             createdAt: Date.now()
         });
 
-        window.navigate(`cliente?id=${clienteId}`);
+        window.navigate(
+            `feedback?type=success&msg=${encodeURIComponent('Pagamento cadastrado com sucesso')}&redirect=${encodeURIComponent('cliente?id=' + clienteId)}`
+        );
     });
 }
