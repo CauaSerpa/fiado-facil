@@ -1,14 +1,8 @@
-import { db }
-from '../../database/db.js';
+import { db } from '../../database/db.js';
+import { listarClientes } from '../../modules/clientes.js';
+import { createClientCard } from '../../components/client-card.js';
 
-import { listarClientes }
-from '../../modules/clientes.js';
-
-import { createClientCard }
-from '../../components/client-card.js';
-
-function normalizeText(text)
-{
+function normalizeText(text) {
     return (text || '')
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
@@ -16,162 +10,97 @@ function normalizeText(text)
         .trim();
 }
 
-export async function initClientes()
-{
-    const clientsList =
-        document.getElementById(
-            'clientsList'
+export async function initClientes() {
+
+    const clientsList = document.getElementById('clientsList');
+    const searchInput = document.getElementById('searchClient');
+
+    if (!clientsList) return;
+
+    let clientes = await listarClientes();
+
+    async function calcularClientesComSaldo(lista) {
+        return await Promise.all(
+            lista.map(async (cliente) => {
+
+                const fiados = await db.fiados
+                    .where('clienteId')
+                    .equals(Number(cliente.id))
+                    .toArray();
+
+                const pagamentos = await db.pagamentos
+                    .where('clienteId')
+                    .equals(Number(cliente.id))
+                    .toArray();
+
+                const totalFiado = fiados.reduce((a, b) => a + b.valor, 0);
+                const totalPago = pagamentos.reduce((a, b) => a + b.valor, 0);
+
+                const saldo = totalFiado - totalPago;
+
+                return { cliente, saldo };
+            })
         );
-
-    if(!clientsList)
-    {
-        return;
     }
 
-    const clientes =
-        await listarClientes();
+    function bindClicks() {
+        document.querySelectorAll('.client-item')
+            .forEach(item => {
+                item.addEventListener('click', () => {
+                    const id = item.dataset.id;
+                    window.navigate?.(`cliente?id=${id}`);
+                });
+            });
+    }
 
-    if(clientes.length === 0)
-    {
-        clientsList.innerHTML =
-            `
-            <div
-                class="card">
+    function render(listaComSaldo) {
 
-                <div
-                    class="card-body text-center">
-
-                    <i
-                        class="ti ti-users fs-1 text-muted">
-                    </i>
-
-                    <h3 class="mt-2">
-                        Nenhum cliente
-                    </h3>
-
-                    <p class="text-muted mb-0">
-                        Cadastre seu primeiro cliente.
-                    </p>
-
+        if (listaComSaldo.length === 0) {
+            clientsList.innerHTML = `
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="ti ti-users fs-1 text-muted"></i>
+                        <h3 class="mt-2">Nenhum cliente</h3>
+                        <p class="text-muted mb-0">Nenhum resultado encontrado.</p>
+                    </div>
                 </div>
-
-            </div>
             `;
+            return;
+        }
 
-        return;
-    }
-
-    const clientesComSaldo = await Promise.all(
-        clientes.map(async (cliente) =>
-        {
-            const fiados = await db.fiados
-                .where('clienteId')
-                .equals(Number(cliente.id))
-                .toArray();
-
-            const pagamentos = await db.pagamentos
-                .where('clienteId')
-                .equals(Number(cliente.id))
-                .toArray();
-
-            const totalFiado = fiados.reduce((a, b) => a + b.valor, 0);
-            const totalPago = pagamentos.reduce((a, b) => a + b.valor, 0);
-
-            const saldo = totalFiado - totalPago;
-
-            return {
-                cliente,
-                saldo
-            };
-        })
-    );
-
-    clientsList.innerHTML =
-        clientesComSaldo
-            .map(({ cliente, saldo }) =>
-                createClientCard(cliente, saldo)
-            )
-            .join('') +
+        clientsList.innerHTML =
+            listaComSaldo
+                .map(({ cliente, saldo }) =>
+                    createClientCard(cliente, saldo)
+                )
+                .join('') +
             `
             <div class="text-center text-muted mt-3 mb-2">
                 Fim da lista
             </div>
             `;
 
-    document
-        .querySelectorAll(
-            '.client-item'
-        )
-        .forEach(item =>
-        {
-            item.addEventListener(
-                'click',
-                () =>
-                {
-                    const id =
-                        item.dataset.id;
+        bindClicks();
+    }
 
-                    window.navigate?.(
-                        `cliente?id=${id}`
-                    );
-                }
-            );
+    // render inicial
+    const initialData = await calcularClientesComSaldo(clientes);
+    render(initialData);
+
+    // search
+    searchInput?.addEventListener('input', async (e) => {
+
+        const termo = normalizeText(e.target.value);
+
+        const filtrados = clientes.filter(cliente => {
+            const nome = normalizeText(cliente.nome);
+            const apelido = normalizeText(cliente.apelido);
+
+            return nome.includes(termo) || apelido.includes(termo);
         });
 
-    const searchInput =
-        document.getElementById(
-            'searchClient'
-        );
+        const data = await calcularClientesComSaldo(filtrados);
 
-    searchInput?.addEventListener(
-        'input',
-        async e =>
-        {
-            const termo =
-                normalizeText(
-                    e.target.value
-                );
-
-            const filtrados =
-                clientes.filter(
-                    cliente =>
-                    {
-                        const nome =
-                            normalizeText(
-                                cliente.nome
-                            );
-
-                        const apelido =
-                            normalizeText(
-                                cliente.apelido
-                            );
-
-                        return (
-                            nome.includes(
-                                termo
-                            )
-                            ||
-                            apelido.includes(
-                                termo
-                            )
-                        );
-                    }
-                );
-
-            clientsList.innerHTML =
-                filtrados
-                    .map(
-                        cliente =>
-                            createClientCard(
-                                cliente
-                            )
-                    )
-                    .join('') +
-                    `
-                    <div class="text-center text-muted mt-3 mb-2">
-                        Fim da lista
-                    </div>
-                    `;
-        }
-    );
+        render(data);
+    });
 }
